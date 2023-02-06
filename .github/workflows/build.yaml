@@ -25,4 +25,4 @@ jobs:
         context: continuous-integration/your-context
         state: success
         description: Your tests passed
-        target_url: https://api.github.com/repos/Nizar-dev-renovate-read-only/sc19/statuses/aeac970fc191abde0d8ea13121aaab56613d3df7
+        target_url: https://api.github.com/repos/Nizar-dev-renovate-read-only/sc19/statuses
