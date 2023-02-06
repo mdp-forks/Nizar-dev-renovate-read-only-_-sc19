@@ -25,6 +25,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         script: |
+          npm install @octokit/rest
           const statusContext = 'continuous-integration/your-context';
           const state = 'success';
           const description = 'Your tests passed';
