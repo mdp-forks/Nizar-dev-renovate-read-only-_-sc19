@@ -1,5 +1,5 @@
 name: Test
-
+on:
   pull_request:
     branches: [main]
   push:
@@ -19,7 +19,7 @@ jobs:
         # Run your tests here
         # ...
 
-  - name: Report status to Github
+    - name: Report status to Github
       uses: actions/create-status@v1
       with:
         context: continuous-integration/your-context
