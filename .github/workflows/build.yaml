@@ -38,15 +38,16 @@ jobs:
           const octokit = require('@octokit/rest');
           const client = new octokit({ auth: `token ${process.env.GITHUB_TOKEN}` });
           
-          client.repos.createCommitStatus({
+           client.repos.createCommitStatus({
             owner: context.repo.owner,
             repo: context.repo.repo,
             sha: context.sha,
             state: state,
             description: description,
             target_url: target_url,
-            context: statusContext
+            context: commitContext
           });
+
 
 
 
