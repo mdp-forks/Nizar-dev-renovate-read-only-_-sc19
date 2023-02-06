@@ -29,9 +29,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         sha: ${{ github.sha }}
-        state: pending # specify 'error', 'failure', 'pending', or 'success'
+        state: success # specify 'error', 'failure', 'pending', or 'success'
         target-url: http://ci.example.com # default: 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}'
-        description: Running.. # option
+        description: status desc
         context: My Workflow # default: '${{ github.workflow }}'
 
 
