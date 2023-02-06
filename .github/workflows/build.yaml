@@ -31,22 +31,20 @@ jobs:
       with:
         script: |
           npm install @octokit/rest
-          const statusContext = 'continuous-integration/your-context';
-          const state = 'success';
-          const description = 'Your tests passed';
-          const target_url = 'https://example.com/status';
-          const octokit = require('@octokit/rest');
-          const client = new octokit({ auth: `token ${process.env.GITHUB_TOKEN}` });
+           npm install @octokit/rest
+          STATUS_CONTEXT='continuous-integration/your-context'
+          STATE='success'
+          DESCRIPTION='Your tests passed'
+          TARGET_URL='https://example.com/status'
           
-          client.repos.createCommitStatus({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            sha: context.sha,
-            state: state,
-            description: description,
-            target_url: target_url,
-            context: statusContext
-          });
+          npx octokit-repos-create-commit-status \
+            --owner "${GITHUB_REPOSITORY%/*}" \
+            --repo "${GITHUB_REPOSITORY#*/}" \
+            --sha "$GITHUB_SHA" \
+            --state "$STATE" \
+            --description "$DESCRIPTION" \
+            --target-url "$TARGET_URL" \
+            --context "$STATUS_CONTEXT"
 
 
 
