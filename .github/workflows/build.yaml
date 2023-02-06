@@ -1,0 +1,25 @@
+name: Test
+
+on: [push]
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run tests
+      run: |
+        echo "Running tests"
+        # Run your tests here
+        # ...
+
+  - name: Report status to Github
+      uses: actions/create-status@v1
+      with:
+        context: continuous-integration/your-context
+        state: success
+        description: Your tests passed
+        target_url: https://example.com/status
