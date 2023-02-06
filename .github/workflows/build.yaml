@@ -18,6 +18,10 @@ jobs:
         echo "Running tests"
         # Run your tests here
         # ...
+        
+    - name: Install dependencies
+      run: |
+       npm install @octokit/rest
 
     - name: Report status to Github
       uses: actions/github-script@v2
