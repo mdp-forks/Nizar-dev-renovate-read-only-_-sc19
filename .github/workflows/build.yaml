@@ -46,7 +46,7 @@ jobs:
             state: state,
             description: description,
             target_url: target_url,
-            context: commitContext
+            context: statusContext
           });
 
 
