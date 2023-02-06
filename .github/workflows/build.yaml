@@ -30,8 +30,10 @@ jobs:
           const description = 'Your tests passed';
           const target_url = 'https://example.com/status';
           
-          const octokit = require('@octokit/rest')({ auth: `token ${process.env.GITHUB_TOKEN}` });
-          octokit.repos.createCommitStatus({
+          const octokit = require('@octokit/rest');
+          const client = new octokit({ auth: `token ${process.env.GITHUB_TOKEN}` });
+          
+          client.repos.createCommitStatus({
             owner: context.repo.owner,
             repo: context.repo.repo,
             sha: context.sha,
@@ -40,5 +42,6 @@ jobs:
             target_url: target_url,
             context: statusContext
           });
+
 
 
