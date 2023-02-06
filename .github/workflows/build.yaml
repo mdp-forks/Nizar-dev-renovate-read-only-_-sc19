@@ -25,7 +25,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         script: |
-          const context = 'continuous-integration/your-context';
+          const statusContext = 'continuous-integration/your-context';
           const state = 'success';
           const description = 'Your tests passed';
           const target_url = 'https://example.com/status';
@@ -38,6 +38,7 @@ jobs:
             state: state,
             description: description,
             target_url: target_url,
-            context: context
+            context: statusContext
           });
+
 
