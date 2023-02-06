@@ -23,28 +23,18 @@ jobs:
       run: |
        npm install @octokit/rest
 
-    - name: Report status to Github
-      uses: actions/github-script@v2
+    - name: Status Create Action
+      uses: hkusu/status-create-action@v1.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       with:
-        script: |
-          npm install @octokit/rest
-           npm install @octokit/rest
-          STATUS_CONTEXT='continuous-integration/your-context'
-          STATE='success'
-          DESCRIPTION='Your tests passed'
-          TARGET_URL='https://example.com/status'
-          
-          npx octokit-repos-create-commit-status \
-            --owner "${GITHUB_REPOSITORY%/*}" \
-            --repo "${GITHUB_REPOSITORY#*/}" \
-            --sha "$GITHUB_SHA" \
-            --state "$STATE" \
-            --description "$DESCRIPTION" \
-            --target-url "$TARGET_URL" \
-            --context "$STATUS_CONTEXT"
+        sha: ${{ github.sha }}
+        state: pending # specify 'error', 'failure', 'pending', or 'success'
+        target-url: http://ci.example.com # default: 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}'
+        description: Running.. # option
+        context: My Workflow # default: '${{ github.workflow }}'
+
+
 
 
 
