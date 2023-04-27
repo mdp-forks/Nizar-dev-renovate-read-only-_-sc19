@@ -24,7 +24,7 @@ jobs:
        npm install @octokit/rest
 
     - name: Status Create Action
-      uses: hkusu/status-create-action@v1.0.0
+      uses: hkusu/status-create-action@v1.0.1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
